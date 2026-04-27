@@ -1,0 +1,89 @@
+name: Build Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            7.0.x
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build package projects
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          PROJECTS=(
+            "ExtendedMissions_BepInEx5/ExtendedMissions_BepInEx5.csproj"
+            "ExtendedMissions_BepInEx6/ExtendedMissions_BepInEx6.csproj"
+            "ExtendedMissions_BepInEx5_Thunderstore/ExtendedMissions_BepInEx5_Thunderstore.csproj"
+          )
+
+          PUB_ROOT="$GITHUB_WORKSPACE/publish"
+          rm -rf "$PUB_ROOT"
+          mkdir -p "$PUB_ROOT"
+
+          for PROJ in "${PROJECTS[@]}"; do
+            PROJ_NAME="$(basename "$PROJ" .csproj)"
+            OUT_DIR="$PUB_ROOT/$PROJ_NAME"
+            PROJECT_DIR="$(dirname "$PROJ")"
+            BUILD_DIR="$GITHUB_WORKSPACE/$PROJECT_DIR/bin/Release/netstandard2.1"
+
+            echo "Building $PROJ"
+            dotnet build "$PROJ" --configuration Release --no-restore
+
+            echo "Staging $BUILD_DIR -> $OUT_DIR"
+            mkdir -p "$OUT_DIR"
+            cp -a "$BUILD_DIR"/. "$OUT_DIR"/
+          done
+
+      - name: Zip published outputs
+        id: zip
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          TAG="${{ github.event.release.tag_name }}"
+          PUB_ROOT="$GITHUB_WORKSPACE/publish"
+          : > /tmp/zip_paths.txt
+
+          for OUT_DIR in "$PUB_ROOT"/*; do
+            [[ -d "$OUT_DIR" ]] || continue
+            PROJ_NAME="$(basename "$OUT_DIR")"
+            ZIP_NAME="${PROJ_NAME}-${TAG}.zip"
+            (cd "$OUT_DIR" && zip -r "$GITHUB_WORKSPACE/$ZIP_NAME" . >/dev/null)
+            echo "$GITHUB_WORKSPACE/$ZIP_NAME" >> /tmp/zip_paths.txt
+          done
+
+          DELIM="__ZIP_LIST__"
+          {
+            echo "files<<$DELIM"
+            cat /tmp/zip_paths.txt
+            echo "$DELIM"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Attach ZIPs to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.zip.outputs.files }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
