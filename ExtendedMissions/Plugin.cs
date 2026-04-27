@@ -1,33 +1,26 @@
 using System;
 using System.Reflection;
-using HarmonyLib;
+using BepInEx;
+#if BEPINEX_6
+using BepInEx.Unity.Mono;
+#endif
 using ExtendedMissions.Registries;
 using ExtendedMissions.Utils;
+using HarmonyLib;
 
 namespace ExtendedMissions
 {
-    public static class Plugin
+    [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
+    public class Plugin : BaseUnityPlugin
     {
         public const string PluginGuid = "nl.pvanhalm.plugins.greyhack.extended-missions";
         public const string PluginName = "Extended Missions";
-        public const string PluginVersion = "0.1.0";
+        public const string PluginVersion = "0.1.1";
 
         private static Action<string>? logMessage;
         private static bool initialized;
 
-        internal static string? ConfigPath { get; private set; }
-
-        public static void SetConfigPath(string configPath)
-        {
-            ConfigPath = string.IsNullOrWhiteSpace(configPath)
-                ? throw new ArgumentException("Config path is required.", nameof(configPath))
-                : configPath;
-        }
-
-        public static void SetLogger(Action<string> logger)
-        {
-            logMessage = logger;
-        }
+        internal static string? ConfigPath => Paths.ConfigPath;
 
         internal static void LogMessage(string text)
         {
@@ -52,6 +45,17 @@ namespace ExtendedMissions
         public static void Shutdown()
         {
             initialized = false;
+        }
+
+        private void OnEnable()
+        {
+            logMessage = Logger.LogMessage;
+            Initialize();
+        }
+
+        private void OnDisable()
+        {
+            Shutdown();
         }
     }
 }

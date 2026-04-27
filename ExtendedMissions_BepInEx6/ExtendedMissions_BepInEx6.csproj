@@ -6,11 +6,9 @@
         <Nullable>enable</Nullable>
         <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
         <DebugType>none</DebugType>
+        <BepInExTarget>6</BepInExTarget>
+        <DefineConstants>$(DefineConstants);BEPINEX_6</DefineConstants>
     </PropertyGroup>
-
-    <ItemGroup>
-        <Compile Include="Plugin.cs" />
-    </ItemGroup>
 
     <ItemGroup>
         <Reference Include="BepInEx.Core">
@@ -32,7 +30,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\ExtendedMissions\ExtendedMissions.csproj">
+        <ProjectReference Include="..\ExtendedMissions\ExtendedMissions.csproj" AdditionalProperties="BepInExTarget=6">
             <Private>false</Private>
         </ProjectReference>
         <ProjectReference Include="..\CustomMissions\SendMoney\ExtendedMissions.SendMoney.csproj" ReferenceOutputAssembly="false" AdditionalProperties="BepInExTarget=6" />
@@ -43,27 +41,27 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="$(SolutionDir)ExtendedMissions\bin\$(Configuration)\netstandard2.1\ExtendedMissions.dll">
+        <None Include="$(SolutionDir)ExtendedMissions\bin\$(BepInExTarget)\$(Configuration)\netstandard2.1\ExtendedMissions.dll">
             <Link>BepInEx\plugins\ExtendedMissions\ExtendedMissions.dll</Link>
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Include="$(SolutionDir)CustomMissions\SendMoney\bin\$(Configuration)\netstandard2.1\ExtendedMissions.SendMoney.dll">
+        <None Include="$(SolutionDir)CustomMissions\SendMoney\bin\$(BepInExTarget)\$(Configuration)\netstandard2.1\ExtendedMissions.SendMoney.dll">
             <Link>BepInEx\plugins\ExtendedMissions\ExtendedMissions.SendMoney.dll</Link>
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Include="$(SolutionDir)CustomMissions\UploadFile\bin\$(Configuration)\netstandard2.1\ExtendedMissions.UploadFile.dll">
+        <None Include="$(SolutionDir)CustomMissions\UploadFile\bin\$(BepInExTarget)\$(Configuration)\netstandard2.1\ExtendedMissions.UploadFile.dll">
             <Link>BepInEx\plugins\ExtendedMissions\ExtendedMissions.UploadFile.dll</Link>
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Include="$(SolutionDir)CustomMissions\CompromisedMail\bin\$(Configuration)\netstandard2.1\ExtendedMissions.CompromisedMail.dll">
+        <None Include="$(SolutionDir)CustomMissions\CompromisedMail\bin\$(BepInExTarget)\$(Configuration)\netstandard2.1\ExtendedMissions.CompromisedMail.dll">
             <Link>BepInEx\plugins\ExtendedMissions\ExtendedMissions.CompromisedMail.dll</Link>
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Include="$(SolutionDir)CustomMissions\ChangePassword\bin\$(Configuration)\netstandard2.1\ExtendedMissions.ChangePassword.dll">
+        <None Include="$(SolutionDir)CustomMissions\ChangePassword\bin\$(BepInExTarget)\$(Configuration)\netstandard2.1\ExtendedMissions.ChangePassword.dll">
             <Link>BepInEx\plugins\ExtendedMissions\ExtendedMissions.ChangePassword.dll</Link>
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Include="$(SolutionDir)CustomMissions\WebsiteDefacement\bin\$(Configuration)\netstandard2.1\ExtendedMissions.WebsiteDefacement.dll">
+        <None Include="$(SolutionDir)CustomMissions\WebsiteDefacement\bin\$(BepInExTarget)\$(Configuration)\netstandard2.1\ExtendedMissions.WebsiteDefacement.dll">
             <Link>BepInEx\plugins\ExtendedMissions\ExtendedMissions.WebsiteDefacement.dll</Link>
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
@@ -71,8 +69,8 @@
 
     <Target Name="RemovePackagingArtifacts" AfterTargets="Build">
         <MakeDir Directories="$(TargetDir)BepInEx\plugins\ExtendedMissions" />
-        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(TargetDir)BepInEx\plugins\ExtendedMissions" />
         <Delete Files="$(TargetPath)" Condition="Exists('$(TargetPath)')" />
+        <Delete Files="$(TargetDir)BepInEx\plugins\ExtendedMissions\$(TargetName).dll" Condition="Exists('$(TargetDir)BepInEx\plugins\ExtendedMissions\$(TargetName).dll')" />
         <Delete Files="$(TargetDir)ExtendedMissions.dll" Condition="Exists('$(TargetDir)ExtendedMissions.dll')" />
         <Delete Files="$(TargetDir)ExtendedMissions.pdb" Condition="Exists('$(TargetDir)ExtendedMissions.pdb')" />
         <Delete Files="$(TargetDir)$(TargetName).deps.json" Condition="Exists('$(TargetDir)$(TargetName).deps.json')" />
