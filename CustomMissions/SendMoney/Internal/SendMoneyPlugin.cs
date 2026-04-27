@@ -1,5 +1,8 @@
 using System.Reflection;
 using BepInEx;
+#if BEPINEX_6
+using BepInEx.Unity.Mono;
+#endif
 using BepInEx.Logging;
 using HarmonyLib;
 

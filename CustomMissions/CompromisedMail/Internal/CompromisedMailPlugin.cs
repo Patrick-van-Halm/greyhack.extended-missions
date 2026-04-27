@@ -1,4 +1,7 @@
 using BepInEx;
+#if BEPINEX_6
+using BepInEx.Unity.Mono;
+#endif
 
 namespace ExtendedMissions.CustomMissions.CompromisedMail
 {

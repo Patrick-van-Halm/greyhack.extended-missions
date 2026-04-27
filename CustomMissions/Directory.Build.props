@@ -1,0 +1,25 @@
+<Project>
+    <PropertyGroup>
+        <BepInExTarget Condition="'$(BepInExTarget)' == ''">5</BepInExTarget>
+        <DefineConstants Condition="'$(BepInExTarget)' == '5'">$(DefineConstants);BEPINEX_5</DefineConstants>
+        <DefineConstants Condition="'$(BepInExTarget)' == '6'">$(DefineConstants);BEPINEX_6</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(BepInExTarget)' == '5'">
+        <Reference Include="BepInEx">
+            <HintPath>$(MSBuildThisFileDirectory)..\ExtendedMissions_BepInEx5\lib\BepInEx.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(BepInExTarget)' == '6'">
+        <Reference Include="BepInEx.Core">
+            <HintPath>$(MSBuildThisFileDirectory)..\ExtendedMissions_BepInEx6\lib\BepInEx.Core.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="BepInEx.Unity.Mono">
+            <HintPath>$(MSBuildThisFileDirectory)..\ExtendedMissions_BepInEx6\lib\BepInEx.Unity.Mono.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+    </ItemGroup>
+</Project>

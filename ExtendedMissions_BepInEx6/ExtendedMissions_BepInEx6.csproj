@@ -35,11 +35,11 @@
         <ProjectReference Include="..\ExtendedMissions\ExtendedMissions.csproj">
             <Private>false</Private>
         </ProjectReference>
-        <ProjectReference Include="..\CustomMissions\SendMoney\ExtendedMissions.SendMoney.csproj" ReferenceOutputAssembly="false" />
-        <ProjectReference Include="..\CustomMissions\UploadFile\ExtendedMissions.UploadFile.csproj" ReferenceOutputAssembly="false" />
-        <ProjectReference Include="..\CustomMissions\CompromisedMail\ExtendedMissions.CompromisedMail.csproj" ReferenceOutputAssembly="false" />
-        <ProjectReference Include="..\CustomMissions\ChangePassword\ExtendedMissions.ChangePassword.csproj" ReferenceOutputAssembly="false" />
-        <ProjectReference Include="..\CustomMissions\WebsiteDefacement\ExtendedMissions.WebsiteDefacement.csproj" ReferenceOutputAssembly="false" />
+        <ProjectReference Include="..\CustomMissions\SendMoney\ExtendedMissions.SendMoney.csproj" ReferenceOutputAssembly="false" AdditionalProperties="BepInExTarget=6" />
+        <ProjectReference Include="..\CustomMissions\UploadFile\ExtendedMissions.UploadFile.csproj" ReferenceOutputAssembly="false" AdditionalProperties="BepInExTarget=6" />
+        <ProjectReference Include="..\CustomMissions\CompromisedMail\ExtendedMissions.CompromisedMail.csproj" ReferenceOutputAssembly="false" AdditionalProperties="BepInExTarget=6" />
+        <ProjectReference Include="..\CustomMissions\ChangePassword\ExtendedMissions.ChangePassword.csproj" ReferenceOutputAssembly="false" AdditionalProperties="BepInExTarget=6" />
+        <ProjectReference Include="..\CustomMissions\WebsiteDefacement\ExtendedMissions.WebsiteDefacement.csproj" ReferenceOutputAssembly="false" AdditionalProperties="BepInExTarget=6" />
     </ItemGroup>
 
     <ItemGroup>
