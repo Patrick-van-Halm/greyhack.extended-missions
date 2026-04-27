@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtendedMissions", "ExtendedMissions\ExtendedMissions.csproj", "{BEDC6566-9324-4977-93FD-067E1466A7B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomWebsites", "..\CustomWebsites\CustomWebsites.csproj", "{11F58E7D-C5DD-44D2-9B4F-2D3A1E38BEA1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtendedMissions.SendMoney", "CustomMissions\SendMoney\ExtendedMissions.SendMoney.csproj", "{1C82DB48-D277-4536-9C70-8E848C2F36CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtendedMissions.UploadFile", "CustomMissions\UploadFile\ExtendedMissions.UploadFile.csproj", "{9779595A-C0A0-44C8-9640-45F0CA4E69E0}"
@@ -44,18 +42,6 @@ Global
 		{BEDC6566-9324-4977-93FD-067E1466A7B1}.Release|x64.Build.0 = Release|Any CPU
 		{BEDC6566-9324-4977-93FD-067E1466A7B1}.Release|x86.ActiveCfg = Release|Any CPU
 		{BEDC6566-9324-4977-93FD-067E1466A7B1}.Release|x86.Build.0 = Release|Any CPU
-		{11F58E7D-C5DD-44D2-9B4F-2D3A1E38BEA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11F58E7D-C5DD-44D2-9B4F-2D3A1E38BEA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11F58E7D-C5DD-44D2-9B4F-2D3A1E38BEA1}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{11F58E7D-C5DD-44D2-9B4F-2D3A1E38BEA1}.Debug|x64.Build.0 = Debug|Any CPU
-		{11F58E7D-C5DD-44D2-9B4F-2D3A1E38BEA1}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{11F58E7D-C5DD-44D2-9B4F-2D3A1E38BEA1}.Debug|x86.Build.0 = Debug|Any CPU
-		{11F58E7D-C5DD-44D2-9B4F-2D3A1E38BEA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11F58E7D-C5DD-44D2-9B4F-2D3A1E38BEA1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11F58E7D-C5DD-44D2-9B4F-2D3A1E38BEA1}.Release|x64.ActiveCfg = Release|Any CPU
-		{11F58E7D-C5DD-44D2-9B4F-2D3A1E38BEA1}.Release|x64.Build.0 = Release|Any CPU
-		{11F58E7D-C5DD-44D2-9B4F-2D3A1E38BEA1}.Release|x86.ActiveCfg = Release|Any CPU
-		{11F58E7D-C5DD-44D2-9B4F-2D3A1E38BEA1}.Release|x86.Build.0 = Release|Any CPU
 		{1C82DB48-D277-4536-9C70-8E848C2F36CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1C82DB48-D277-4536-9C70-8E848C2F36CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C82DB48-D277-4536-9C70-8E848C2F36CE}.Debug|x64.ActiveCfg = Debug|Any CPU
