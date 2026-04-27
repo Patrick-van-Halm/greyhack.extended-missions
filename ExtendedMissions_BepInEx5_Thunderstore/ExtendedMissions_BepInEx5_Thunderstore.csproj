@@ -13,20 +13,16 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Reference Include="0Harmony">
-            <HintPath>lib\0Harmony.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="BepInEx">
             <HintPath>lib\BepInEx.dll</HintPath>
             <Private>false</Private>
         </Reference>
         <Reference Include="UnityEngine">
-            <HintPath>D:\SteamLibrary\steamapps\common\Grey Hack\Grey Hack_Data\Managed\UnityEngine.dll</HintPath>
+            <HintPath>..\ExtendedMissions\lib\UnityEngine.dll</HintPath>
             <Private>false</Private>
         </Reference>
         <Reference Include="UnityEngine.CoreModule">
-            <HintPath>D:\SteamLibrary\steamapps\common\Grey Hack\Grey Hack_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+            <HintPath>..\ExtendedMissions\lib\UnityEngine.CoreModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
     </ItemGroup>

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using BepInEx;
 using ExtendedMissions.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -24,8 +23,8 @@ namespace ExtendedMissions.Registries
                 throw new ArgumentException("Registry name is required.");
             }
 
-            registryFilePath = Path.Combine(Paths.ConfigPath, $"{Plugin.PluginName.Replace(" ", "_")}.{Name}.json");
-            invalidRegistryFilePath = Path.Combine(Paths.ConfigPath,  $"{Plugin.PluginName.Replace(" ", "_")}.{Name}.invalid.json");
+            registryFilePath = Path.Combine(Plugin.ConfigPath!, $"{Plugin.PluginName.Replace(" ", "_")}.{Name}.json");
+            invalidRegistryFilePath = Path.Combine(Plugin.ConfigPath!,  $"{Plugin.PluginName.Replace(" ", "_")}.{Name}.invalid.json");
         }
 
         public int Reserve(string key)

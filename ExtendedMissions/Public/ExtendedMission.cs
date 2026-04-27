@@ -1,6 +1,5 @@
 using System.Linq;
 using System.Reflection;
-using BepInEx;
 using ExtendedMissions.Missions;
 using ExtendedMissions.Registries;
 
@@ -35,14 +34,17 @@ public abstract class ExtendedMission<TInstance> : IExtendedMission
         {
             var pluginType = typeof(TInstance).Assembly
             .GetTypes()
-            .FirstOrDefault(type => type.GetCustomAttribute<BepInPlugin>() != null);
-            var plugin = pluginType?.GetCustomAttribute<BepInPlugin>();
-            if (plugin == null)
+            .FirstOrDefault(type => type.GetCustomAttributes()
+                .Any(attribute => attribute.GetType().FullName == "BepInEx.BepInPlugin"));
+            var plugin = pluginType?.GetCustomAttributes()
+                .FirstOrDefault(attribute => attribute.GetType().FullName == "BepInEx.BepInPlugin");
+            var pluginGuid = plugin?.GetType().GetProperty("GUID")?.GetValue(plugin) as string;
+            if (string.IsNullOrWhiteSpace(pluginGuid))
             {
                 return typeof(TInstance).FullName ?? typeof(TInstance).Name;
             }
 
-            return $"{plugin.GUID}.{typeof(TInstance).Name}";
+            return $"{pluginGuid}.{typeof(TInstance).Name}";
         }
     }
 

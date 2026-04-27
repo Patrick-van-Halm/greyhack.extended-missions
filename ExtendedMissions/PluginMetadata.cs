@@ -15,6 +15,15 @@ namespace ExtendedMissions
         private static Action<string>? logMessage;
         private static bool initialized;
 
+        internal static string? ConfigPath { get; private set; }
+
+        public static void SetConfigPath(string configPath)
+        {
+            ConfigPath = string.IsNullOrWhiteSpace(configPath)
+                ? throw new ArgumentException("Config path is required.", nameof(configPath))
+                : configPath;
+        }
+
         public static void SetLogger(Action<string> logger)
         {
             logMessage = logger;
@@ -28,6 +37,11 @@ namespace ExtendedMissions
         public static void Initialize()
         {
             if (initialized) return;
+
+            if (string.IsNullOrWhiteSpace(ConfigPath))
+            {
+                throw new InvalidOperationException("Config path must be set before initialization.");
+            }
 
             initialized = true;
             Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());

@@ -42,32 +42,8 @@
             <HintPath>D:\SteamLibrary\steamapps\common\Grey Hack\Grey Hack_Data\Managed\UnityEngine.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.AudioModule">
-            <HintPath>D:\SteamLibrary\steamapps\common\Grey Hack\Grey Hack_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.CoreModule">
             <HintPath>D:\SteamLibrary\steamapps\common\Grey Hack\Grey Hack_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
-            <HintPath>D:\SteamLibrary\steamapps\common\Grey Hack\Grey Hack_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestAudioModule">
-            <HintPath>D:\SteamLibrary\steamapps\common\Grey Hack\Grey Hack_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestModule">
-            <HintPath>D:\SteamLibrary\steamapps\common\Grey Hack\Grey Hack_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestTextureModule">
-            <HintPath>D:\SteamLibrary\steamapps\common\Grey Hack\Grey Hack_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestWWWModule">
-            <HintPath>D:\SteamLibrary\steamapps\common\Grey Hack\Grey Hack_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
     </ItemGroup>

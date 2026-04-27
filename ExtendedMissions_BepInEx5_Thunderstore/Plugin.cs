@@ -8,6 +8,7 @@ namespace ExtendedMissions
     {
         private void OnEnable()
         {
+            CorePlugin.SetConfigPath(Paths.ConfigPath);
             CorePlugin.SetLogger(base.Logger.LogMessage);
             CorePlugin.Initialize();
         }
