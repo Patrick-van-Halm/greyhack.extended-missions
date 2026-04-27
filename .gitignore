@@ -1,0 +1,53 @@
+# Build output
+bin/
+obj/
+**/bin/
+**/obj/
+
+# Rider / ReSharper
+*.sln.DotSettings.user
+_ReSharper*/
+*.user
+*.suo
+
+# Visual Studio
+.vs/
+*.userosscache
+*.sln.docstates
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+
+# BepInEx / local runtime output
+BepInEx/cache/
+BepInEx/config/
+BepInEx/core/
+BepInEx/patchers/
+BepInEx/plugins/
+BepInEx/LogOutput.log
+doorstop_config.ini
+winhttp.dll
+
+# Thunderstore/package artifacts
+*.zip
+*.7z
+*.tar
+*.tar.gz
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
+*.cache
+Thumbs.db
+Desktop.ini
